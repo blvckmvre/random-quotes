@@ -1,0 +1,43 @@
+const URL = "https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json";
+
+const App = () => {
+  const [quote, setQuote] = React.useState(null);
+  const fetchRandom = async() => {
+    const res = await axios.get(URL);
+    const quotes = res.data.quotes;
+    setQuote(quotes[Math.floor(Math.random()*quotes.length)]);
+  }
+ 
+  React.useEffect(()=>{
+    fetchRandom()
+  },[]);
+  return (
+    <>
+    {quote && <div id="quote-box"> 
+      <div id="icns-wrapper">
+        <i className="fa-solid fa-quote-left"></i>
+        <i className="fa-solid fa-quote-right"></i>
+      </div>
+      <div id="text">{quote.quote}</div>
+      <div id="author">- {quote.author}</div>
+      <div id="btns-wrapper">
+        <button 
+          onClick={fetchRandom} 
+          id="new-quote"
+        >New</button>
+        <a 
+          href={`https://twitter.com/intent/tweet?text="${quote.quote}" – ${quote.author}&hashtags=quotes,${quote.author.replace(/\s/g,'')}`} 
+          id="tweet-quote"
+          target="_top"
+          rel="noopener"
+        >
+          <i className="fa-brands fa-twitter"></i> Tweet
+        </a>
+      </div>
+    </div>}
+    </>
+  )
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);

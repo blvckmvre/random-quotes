@@ -1,0 +1,87 @@
+$front-color: #e0e5c8
+$back-color: #909670
+$accent-color: #608570
+
+*,::before,::after
+  box-sizing: border-box
+
+html
+  font-size: 20px
+
+body
+  font-family: Tahoma, sans-serif
+  margin: 0
+  padding: 0
+  color: $accent-color
+
+#root
+  position: fixed
+  top:0
+  left:0
+  right:0
+  bottom:0
+  display: flex
+  align-items: center
+  justify-content: center
+  background: $back-color
+
+#quote-box 
+  padding: 50px
+  background: $front-color
+  width: 60vw
+  min-width: 400px
+  border-radius: 20px
+  min-height: 350px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+  
+#icns-wrapper 
+  width: 100%
+  display: flex
+  justify-content: space-between
+  font-size: 1.8rem
+  
+#text 
+  font-weight: bold
+  font-size: 1.2rem
+  
+  
+#btns-wrapper
+  width: 100%
+  display: flex
+  align-items: center
+  justify-content: space-between
+  
+#new-quote
+  padding: 10px
+  width: 100px
+  border: none
+  background: honeydew
+  border: 1px solid $accent-color
+  color: $accent-color
+  transition: 0.25s
+  cursor: pointer
+  &:hover
+    background: $accent-color
+    color: honeydew
+    box-shadow: 0 0 10px 3px darkolivegreen
+
+#tweet-quote
+  text-decoration: none
+  color: skyblue
+  background: cadetblue
+  padding: 7px
+  width: 100px
+  text-align: center
+  transition: 0.25s
+  &:hover
+    box-shadow: 0 0 10px 3px lightskyblue
+    color: whitesmoke
+  
+@media (max-width: 500px)
+  #text
+    font-size: 1rem
+  #author
+    font-size: 0.9rem
